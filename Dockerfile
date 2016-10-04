@@ -23,6 +23,11 @@ RUN wget https://github.com/jwilder/docker-gen/releases/download/$DOCKER_GEN_VER
  && tar -C /usr/local/bin -xvzf docker-gen-linux-amd64-$DOCKER_GEN_VERSION.tar.gz \
  && rm /docker-gen-linux-amd64-$DOCKER_GEN_VERSION.tar.gz
 
+RUN { \
+      echo 'server_tokens off;'; \
+      echo 'client_max_body_size 4m;'; \
+    } > /etc/nginx/conf.d/my_proxy.conf
+
 COPY . /app/
 WORKDIR /app/
 
