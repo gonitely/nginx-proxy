@@ -25,7 +25,7 @@ RUN wget https://github.com/jwilder/docker-gen/releases/download/$DOCKER_GEN_VER
 
 RUN { \
       echo 'server_tokens off;'; \
-      echo 'client_max_body_size 4m;'; \
+      echo 'client_max_body_size 20m;'; \
     } > /etc/nginx/conf.d/my_proxy.conf
 
 COPY . /app/
